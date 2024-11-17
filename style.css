@@ -1,0 +1,67 @@
+body {
+  background-color: rgb(3, 3, 104);
+  color: white;
+  font: 1em sans-serif;
+  border-style: solid;
+  padding: 2%;
+}
+#speaker {
+  color: white;
+  font-size: 5em;
+  margin: 10px;
+}
+
+.input_field {
+  /* border-style: solid; */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input_field input {
+  position: relative;
+  outline: none;
+  padding: 5px;
+  margin-right: 1%;
+  width: 40%;
+  height: 80%;
+  border-radius: 10px;
+  border-style: none;
+}
+.input_field button {
+  background-color: gold;
+  position: relative;
+  padding: 12px;
+  min-width: 15%;
+  height: 120%;
+  border-radius: 10px;
+}
+
+#body-data{
+/* border-style: solid; */
+padding-top: 2%;
+padding-bottom: 2%;
+padding-left: 1%;
+}
+
+#maindiv{
+
+}
+
+.subdiv{
+    padding: 2%;
+}
+
+.subdiv h1{
+    font-style: italic;
+    font-family: Tahoma;
+    
+}
+
+.subdiv h2{
+    color: rgb(7, 192, 7);
+    font-family: sans-serif;
+    font-variant:small-caps;
+    text-decoration: wavy;
+}
+
