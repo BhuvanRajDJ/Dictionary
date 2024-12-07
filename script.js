@@ -1,14 +1,18 @@
 var word = "";
 var musicsrc = "";
-// speaker logo
+
 var speaker = document.getElementById("speaker");
-// audio id
+
 var pronounciation = document.getElementById("pronounciation");
 
 document.getElementById("search").addEventListener("click", function (event) {
-  if ((event.target.tagName = "BUTTON")) {
-    word = document.getElementById("word").value;
-    meaning(word);
+  if (event.target.tagName === "BUTTON") {
+    word = document.getElementById("word").value.trim();
+    if (word) {
+      meaning(word);
+    } else {
+      alert("please enter a word to search.");
+    }
   }
 });
 
@@ -27,17 +31,18 @@ async function meaning(word) {
     `;
     if (!response.ok) {
       const newerror = document.createElement("h4");
-      newerror.textContent = `"Error: " + ${response.status}`;
+      newerror.textContent = `Error: + ${response.status}`;
       maindiv.appendChild(newerror);
+      return;
     }
     const data = await response.json();
 
     data.forEach(function (wordinfo) {
       // set audio link//
       wordinfo.phonetics.forEach(function (music) {
-        if (music.audio != "") {
+        if (music.audio) {
           musicsrc = music.audio;
-          pronounciation.src = "";
+          // pronounciation.src = "";
           pronounciation.src = musicsrc;
           console.log("pronounciation.src:" + pronounciation.src);
         }
@@ -45,7 +50,7 @@ async function meaning(word) {
 
       console.log("music src:" + musicsrc);
 
-      wordinfo.meanings.forEach(function (defn, index) {
+      wordinfo.meanings.forEach(function (defn) {
         const meaning = document.createElement("h2");
         meaning.textContent = `Parts of speech: ${defn.partOfSpeech}`;
         subdiv.appendChild(meaning);
@@ -109,7 +114,8 @@ async function meaning(word) {
 }
 
 speaker.addEventListener("click", function () {
-  if (pronounciation.paused && speaker.className == "fa-solid fa-volume-low") {
+  
+  if (pronounciation.paused) {
     pronounciation.play();
     speaker.className = "fa-solid fa-volume-high";
   } else {
